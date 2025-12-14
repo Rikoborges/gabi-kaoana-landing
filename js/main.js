@@ -1,25 +1,22 @@
 // =========================
-// main.js — Script principal
+// main.js — Funcionalidades
 // =========================
 
-// ELEMENTOS DO MENU
+// Menu Elements
 const menuToggleBtn = document.getElementById("menu-toggle");
 const menuList = document.getElementById("menu-list");
 
-// VOLTAR AO TOPO
+// Voltar ao topo
 const backToTopBtn = document.getElementById("voltar-topo");
 
-// MODAIS
-const modals = document.querySelectorAll(".modal");
-
-// PROMOÇÕES
+// Promoções
 const publicPromoSection = document.getElementById("secao-promocoes-publica");
 const urlParams = new URLSearchParams(window.location.search);
 const isAdminMode = urlParams.get("admin") === "true";
 const promoForm = document.getElementById("formPromocao");
 const adminPromoList = document.getElementById("listaPromocoes");
 
-// INICIALIZAÇÃO
+// Inicialização
 document.addEventListener("DOMContentLoaded", () => {
   initMenu();
   initBackToTop();
@@ -36,11 +33,12 @@ function initMenu() {
 
   menuToggleBtn.addEventListener("click", () => {
     menuList.classList.toggle("show");
-    // Altera o símbolo
-    menuToggleBtn.innerHTML = menuList.classList.contains("show") ? "&times;" : "&#9776;";
+    menuToggleBtn.innerHTML = menuList.classList.contains("show")
+      ? "&times;"
+      : "&#9776;";
   });
 
-  // Fecha menu ao clicar em links
+  // Fecha menu ao clicar em links (mobile)
   document.querySelectorAll("#menu-list a").forEach((link) => {
     link.addEventListener("click", () => {
       if (window.innerWidth <= 768) {
@@ -60,15 +58,13 @@ function initMenu() {
 }
 
 // =========================
-// BOTÃO VOLTAR AO TOPO
+// VOLTAR AO TOPO
 // =========================
 function initBackToTop() {
   if (!backToTopBtn) return;
-
   window.addEventListener("scroll", () => {
     backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
   });
-
   backToTopBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
@@ -78,7 +74,7 @@ function initBackToTop() {
 // MODAIS
 // =========================
 function initModals() {
-  modals.forEach((modal) => {
+  document.querySelectorAll(".modal").forEach((modal) => {
     modal.addEventListener("click", (event) => {
       if (event.target === modal) {
         modal.classList.add("hidden");
@@ -86,22 +82,24 @@ function initModals() {
       }
     });
   });
-  window.openModal = function (id) {
-    const m = document.getElementById(id);
-    if (!m) return;
-    m.classList.remove("hidden");
-    document.body.style.overflow = "hidden";
-  };
-  window.closeModal = function (id) {
-    const m = document.getElementById(id);
-    if (!m) return;
-    m.classList.add("hidden");
-    document.body.style.overflow = "auto";
-  };
 }
 
+window.openModal = function (id) {
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+};
+
+window.closeModal = function (id) {
+  const modal = document.getElementById(id);
+  if (!modal) return;
+  modal.classList.add("hidden");
+  document.body.style.overflow = "auto";
+};
+
 // =========================
-// MODO ADMIN — PROMOÇÕES
+// ADMIN PROMOÇÕES
 // =========================
 function initPromoAdmin() {
   if (!isAdminMode || !promoForm || !adminPromoList) return;
@@ -113,6 +111,7 @@ function initPromoAdmin() {
 
 function handlePromoFormSubmit(e) {
   e.preventDefault();
+
   const title = document.getElementById("titulo").value.trim();
   const price = document.getElementById("preco").value.trim();
   const description = document.getElementById("descricao").value.trim();
@@ -149,9 +148,11 @@ function handlePromoFormSubmit(e) {
 function getStoredPromotions() {
   return JSON.parse(localStorage.getItem("promocoes") || "[]");
 }
+
 function savePromotions(promos) {
   localStorage.setItem("promocoes", JSON.stringify(promos));
 }
+
 function savePromotion(promo) {
   const list = getStoredPromotions();
   list.push({ id: Date.now(), ...promo });
@@ -159,7 +160,7 @@ function savePromotion(promo) {
 }
 
 // =========================
-// RENDER ADMIN PROMOS
+// RENDER ADMIN PROMOÇÕES
 // =========================
 function renderAdminPromotions() {
   const promos = getStoredPromotions();
@@ -177,7 +178,7 @@ function renderAdminPromotions() {
       <h3>${promo.title}</h3>
       <p>R$ ${promo.price}</p>
       <p>${promo.description}</p>
-      ${promo.image ? `<img src="${promo.image}" alt="Foto da promoção: ${promo.title}">` : ""}
+      ${promo.image ? `<img src="${promo.image}" alt="Promoção: ${promo.title}">` : ""}
       <button class="btn-excluir" onclick="deletePromo(${promo.id})">🗑 Excluir</button>
     `;
     adminPromoList.appendChild(div);
@@ -185,7 +186,7 @@ function renderAdminPromotions() {
 }
 
 window.deletePromo = function (id) {
-  if (!confirm("Tem certeza que deseja excluir esta promoção?")) return;
+  if (!confirm("Deseja excluir esta promoção?")) return;
   const filtered = getStoredPromotions().filter((p) => p.id !== id);
   savePromotions(filtered);
   renderAdminPromotions();
@@ -194,16 +195,19 @@ window.deletePromo = function (id) {
 };
 
 // =========================
-// RENDER PUBLIC PROMOS
+// RENDER PUBLIC PROMOÇÕES
 // =========================
 function renderPublicPromotions() {
   if (!publicPromoSection) return;
+
   const promos = getStoredPromotions();
   publicPromoSection.innerHTML = "";
+
   if (promos.length === 0) {
-    publicPromoSection.innerHTML = "<p>Nenhuma promoção no momento.</p>";
+    publicPromoSection.innerHTML = "<p>Nenhuma promoção disponível.</p>";
     return;
   }
+
   promos.forEach((promo) => {
     const card = document.createElement("div");
     card.className = "card-cardapio";
@@ -218,7 +222,7 @@ function renderPublicPromotions() {
 }
 
 // =========================
-// TOASTS
+// TOASTS (Notificações)
 // =========================
 function showToast(message, type = "sucesso") {
   const toast = document.createElement("div");
@@ -226,5 +230,6 @@ function showToast(message, type = "sucesso") {
   toast.setAttribute("role", "status");
   toast.textContent = message;
   document.body.appendChild(toast);
+
   setTimeout(() => toast.remove(), 3500);
 }
