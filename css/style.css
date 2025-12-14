@@ -1,0 +1,501 @@
+/* ================================
+   GABI KAOANA – LANDING PAGE CSS
+   ================================ */
+
+/* ---- PALETA DE CORES REFINADA ---- */
+:root {
+  --lavanda: #7A3D8F;
+  --lavanda-claro: #A070BA;
+  --pistache: #A9C94F;
+  --pistache-hover: #92B543;
+  --whatsapp-green: #25D366;
+  --whatsapp-hover: #1DA851;
+  --texto: #4A382C;
+  --fundo: #FAF9F5;
+  --card-bg: #FCFBF7;
+  --secao-clara: #F7F5EE;
+  --cinza-claro: #F3F2EE;
+  --sombra: rgba(0, 0, 0, 0.05);
+  --footer-bg: #6D357D;
+  --footer-text: #F6F3F8;
+  --toast-bg: #333;
+  --toast-success: #28a745;
+  --toast-error: #dc3545;
+  --toast-text: #fff;
+}
+
+/* ---- RESET GLOBAL ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* =======================
+   HEADER & LOGO
+   ======================= */
+.topo {
+  background: var(--lavanda);
+  color: var(--footer-text);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  box-shadow: 0 2px 6px var(--sombra);
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+}
+
+.logo {
+  height: 50px;
+  max-width: 180px;
+  object-fit: contain;
+}
+
+.nome-logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--footer-text);
+  transition: color 0.3s;
+}
+
+.logo-link:hover .nome-logo {
+  color: var(--pistache-hover);
+}
+
+/* ---- BOTÃO DO MENU (mobile) ---- */
+.menu-toggle {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--footer-text);
+  cursor: pointer;
+  display: none;
+}
+
+/* =======================
+   MENU LATERAL (mobile)
+   ======================= */
+.menu-lateral {
+  position: fixed;
+  left: -100%;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  background: var(--lavanda-claro);
+  padding-top: 3rem;
+  transition: 0.3s ease-in-out;
+  z-index: 1050;
+  box-shadow: 2px 0 12px var(--sombra);
+}
+
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-lateral li {
+  margin-bottom: 1.4rem;
+}
+
+.menu-lateral a {
+  color: var(--footer-text);
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem;
+  display: block;
+  transition: background 0.3s, color 0.3s;
+}
+
+.menu-lateral a:hover {
+  background: var(--lavanda);
+  color: var(--pistache);
+}
+
+/* Classe que “solta” o menu para dentro */
+.menu-lateral.show {
+  left: 0;
+}
+
+/* Ajuste do botão de menu para mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* =======================
+   SEÇÕES
+   ======================= */
+.secao {
+  padding: 4rem 2rem;
+  margin: auto;
+  max-width: 1080px;
+}
+
+.secao:nth-child(odd) {
+  background: var(--secao-clara);
+}
+.secao:nth-child(even) {
+  background: var(--cinza-claro);
+}
+
+.secao h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--lavanda);
+}
+
+/* =======================
+   HERO
+   ======================= */
+.hero {
+  text-align: center;
+  padding-top: 3rem;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  color: var(--lavanda);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ---- BOTÃO WHATSAPP ---- */
+.btn-whatsapp {
+  background: var(--whatsapp-green);
+  color: var(--footer-text);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.25s;
+}
+
+.btn-whatsapp:hover,
+.btn-whatsapp:focus {
+  background: var(--whatsapp-hover);
+  transform: scale(1.05);
+}
+
+/* =======================
+   BENEFÍCIOS
+   ======================= */
+.beneficios-lista {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+}
+
+.beneficios-lista li {
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  padding-left: 1.8rem;
+  position: relative;
+}
+
+.beneficios-lista li::before {
+  content: "✔️";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* =======================
+   GRID PRINCIPAIS
+   ======================= */
+.grid-destaques,
+.grid-cardapio,
+.grid-galeria,
+.grid-clientes {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-destaques {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* =======================
+   CARD DESTAQUES
+   ======================= */
+.card-destaque {
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 3px 10px var(--sombra);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card-destaque img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* =======================
+   CARDÁPIO
+   ======================= */
+.grid-cardapio {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card-cardapio {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 3px 8px var(--sombra);
+  transition: transform 0.3s;
+}
+
+.card-cardapio img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* =======================
+   GALERIA
+   ======================= */
+.grid-galeria {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.galeria img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px var(--sombra);
+  transition: transform 0.3s;
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+/* =======================
+   DEPOIMENTOS CLIENTES
+   ======================= */
+.grid-clientes {
+  grid-template-columns: repeat(auto-fit, minmin(180px, 1fr));
+}
+
+.card-cliente {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px var(--sombra);
+  text-align: center;
+}
+
+.card-cliente img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: .6rem;
+}
+
+/* =======================
+   BOTÃO INSTAGRAM
+   ======================= */
+.btn-instagram {
+  display: inline-block;
+  background: #E1306C;
+  color: var(--footer-text);
+  padding: .9rem 1.6rem;
+  margin-top: 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.25s;
+}
+
+.btn-instagram:hover,
+.btn-instagram:focus {
+  background: #c72f63;
+  transform: scale(1.05);
+}
+
+/* =======================
+   FOOTER
+   ======================= */
+footer.footer-principal {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 2.5rem 2rem;
+  font-size: .9rem;
+  text-align: center;
+}
+
+.footer-conteudo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1080px;
+  margin: auto;
+}
+
+.footer-col h3 {
+  color: var(--lavanda-claro);
+  margin-bottom: .6rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.4rem;
+}
+
+.footer-col a {
+  color: var(--footer-text);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-col a:hover {
+  color: var(--pistache-hover);
+}
+
+/* =======================
+   BOTÃO VOLTAR AO TOPO
+   ======================= */
+#voltar-topo {
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  background: var(--whatsapp-green);
+  color: var(--footer-text);
+  padding: 1rem 1.2rem;
+  font-size: 1.6rem;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px var(--sombra);
+  display: none;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+#voltar-topo:hover {
+  background: var(--whatsapp-hover);
+  transform: scale(1.15);
+}
+
+/* =======================
+   TOASTS / NOTIFICAÇÕES
+   ======================= */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.9rem 1.6rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: var(--toast-text);
+  background: var(--toast-bg);
+  opacity: 0;
+  animation: toastFade 0.3s ease-in-out forwards;
+  z-index: 3000;
+}
+
+.toast-sucesso {
+  background: var(--toast-success);
+}
+
+.toast-erro {
+  background: var(--toast-error);
+}
+
+@keyframes toastFade {
+  from { opacity: 0; bottom: 8px; }
+  to { opacity: 1; bottom: 24px; }
+}
+
+/* =======================
+   MODAIS (Políticas)
+   ======================= */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.38);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 2000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 4px 12px var(--sombra);
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--texto);
+}
+
+/* =======================
+   RESPONSIVIDADE
+   ======================= */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.4rem; }
+  .btn-whatsapp { width: 100%; text-align: center; font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+  .secao { padding: 2rem 1rem; }
+  .grid-destaques,
+  .grid-cardapio,
+  .grid-clientes { grid-template-columns: 1fr; }
+}
