@@ -1,29 +1,21 @@
-/**
- * main.js — Script principal do site
- * ✔ Menu lateral responsivo
- * ✔ Botão voltar ao topo
- * ✔ Modais com fundo leve
- * ✔ Promoções (modo admin)
- * ✔ Feedback visual (toasts)
- */
+// =========================
+// main.js — Script principal
+// =========================
 
-// ---- ELEMENTS ----
+// ---- ELEMENTOS GERAIS ----
 const menuToggleBtn = document.getElementById("menu-toggle");
 const menuList = document.getElementById("menu-list");
 const backToTopBtn = document.getElementById("voltar-topo");
-
-// Seção de promoções pública (se existir no HTML)
 const publicPromoSection = document.getElementById("secao-promocoes-publica");
 
-// Admin?
 const urlParams = new URLSearchParams(window.location.search);
 const isAdminMode = urlParams.get("admin") === "true";
 
-// Elements do admin (se existir)
+// Elementos do admin (se existirem)
 const promoForm = document.getElementById("formPromocao");
 const adminPromoList = document.getElementById("listaPromocoes");
 
-// ---- INITIALIZE ----
+// ---- INICIALIZAÇÃO ----
 document.addEventListener("DOMContentLoaded", () => {
   initMenuLateral();
   initBackToTop();
@@ -32,22 +24,33 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPublicPromotions();
 });
 
-// ---- MENU LATERAL SLIDE ----
+// =========================
+// MENU LATERAL (Mobile)
+// =========================
 function initMenuLateral() {
   menuToggleBtn.addEventListener("click", () => {
     menuList.classList.toggle("show");
+    menuToggleBtn.innerHTML = menuList.classList.contains("show") ? "&times;" : "&#9776;";
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) {
+      menuList.classList.remove("show");
+      menuToggleBtn.innerHTML = "&#9776;";
+    }
   });
 }
 
-// ---- CLOSE MENU LATERAL ----
 function closeSlideMenu() {
   menuList.classList.remove("show");
+  menuToggleBtn.innerHTML = "&#9776;";
 }
 
-// Deixa disponível globalmente
 window.closeSlideMenu = closeSlideMenu;
 
-// ---- BACK TO TOP ----
+// =========================
+// BOTÃO VOLTAR AO TOPO
+// =========================
 function initBackToTop() {
   window.addEventListener("scroll", () => {
     backToTopBtn.style.display = window.scrollY > 350 ? "block" : "none";
@@ -58,7 +61,9 @@ function initBackToTop() {
   });
 }
 
-// ---- MODALS ----
+// =========================
+// MODAIS (Políticas)
+// =========================
 function initModals() {
   window.openModal = function (id) {
     const modal = document.getElementById(id);
@@ -84,7 +89,9 @@ function initModals() {
   });
 }
 
-// ---- PROMOÇÕES — ADMIN ----
+// =========================
+// MODO ADMIN - PROMOÇÕES
+// =========================
 function initPromoAdmin() {
   if (!isAdminMode || !promoForm || !adminPromoList) return;
 
@@ -130,7 +137,9 @@ function createPromoObject({ title, price, description, image }) {
   return { id: Date.now(), title, price, description, image };
 }
 
-// ---- LOCALSTORAGE HELPERS ----
+// =========================
+// LOCALSTORAGE HELPERS
+// =========================
 function getStoredPromotions() {
   return JSON.parse(localStorage.getItem("promocoes") || "[]");
 }
@@ -145,7 +154,9 @@ function savePromotion(promo) {
   savePromotions(list);
 }
 
-// ---- ADMIN PROMO RENDER ----
+// =========================
+// ADMIN — RENDER PROMOÇÕES
+// =========================
 function renderAdminPromotions() {
   const promos = getStoredPromotions();
   adminPromoList.innerHTML = "";
@@ -164,7 +175,7 @@ function renderAdminPromotions() {
         <p><strong>R$</strong> ${promo.price}</p>
         <p>${promo.description}</p>
       </div>
-      ${promo.image ? `<img src="${promo.image}" alt="${promo.title}">` : ""}
+      ${promo.image ? `<img src="${promo.image}" alt="Foto da promoção: ${promo.title}">` : ""}
       <button class="btn-excluir" onclick="deletePromo(${promo.id})">🗑 Excluir</button>
     `;
     adminPromoList.appendChild(div);
@@ -180,7 +191,9 @@ window.deletePromo = function (id) {
   showToast("Promoção excluída!", "sucesso");
 };
 
-// ---- PUBLIC PROMO RENDER ----
+// =========================
+// PÚBLICO — RENDER PROMOÇÕES
+// =========================
 function renderPublicPromotions() {
   if (!publicPromoSection) return;
 
@@ -196,7 +209,7 @@ function renderPublicPromotions() {
     const card = document.createElement("div");
     card.className = "card-cardapio";
     card.innerHTML = `
-      ${promo.image ? `<img src="${promo.image}" alt="${promo.title}">` : ""}
+      ${promo.image ? `<img src="${promo.image}" alt="Foto da promoção: ${promo.title}">` : ""}
       <h3>${promo.title}</h3>
       <p>R$ ${promo.price}</p>
       <p>${promo.description}</p>
@@ -205,10 +218,13 @@ function renderPublicPromotions() {
   });
 }
 
-// ---- TOAST / NOTIFICAÇÃO ----
+// =========================
+// TOASTS (Notificações)
+// =========================
 function showToast(message, type = "sucesso") {
   const toast = document.createElement("div");
   toast.className = `toast toast-${type}`;
+  toast.setAttribute("role", "status");
   toast.textContent = message;
   document.body.appendChild(toast);
 
