@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Painel Admin · Gabi Kaoana</title>
+
+  <!-- CSS do Admin -->
+  <link rel="stylesheet" href="css/admin.css">
+
+  <!-- SDK Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <!-- ===== LOGIN ===== -->
+  <section id="login-section">
+    <h1>Entrar como Admin</h1>
+    <input type="email" id="login-email" placeholder="Seu e-mail (admin)">
+    <input type="password" id="login-password" placeholder="Sua senha">
+    <button id="btn-login">Entrar</button>
+    <p id="login-error" class="error"></p>
+  </section>
+
+  <!-- ===== DASHBOARD ===== -->
+  <section id="admin-dashboard" class="hidden">
+
+    <header>
+      <h2>Painel Admin</h2>
+      <button id="btn-logout">Sair</button>
+    </header>
+
+    <!-- MENU -->
+    <nav>
+      <button class="tab-btn" data-tab="promocoes">Promoções</button>
+      <button class="tab-btn" data-tab="galeria">Galeria</button>
+      <button class="tab-btn" data-tab="comentarios">Comentários</button>
+    </nav>
+
+    <!-- CONTEÚDO -->
+    <main>
+
+      <!-- PROMOÇÕES -->
+      <div id="tab-promocoes" class="tab hidden">
+        <h3>Gerenciar Promoções</h3>
+        <button id="btn-add-promo">Adicionar Promoção</button>
+        <div id="list-promocoes"></div>
+      </div>
+
+      <!-- GALERIA -->
+      <div id="tab-galeria" class="tab hidden">
+        <h3>Gerenciar Galeria</h3>
+        <button id="btn-add-galeria">Adicionar Imagem</button>
+        <div id="list-galeria"></div>
+      </div>
+
+      <!-- COMENTÁRIOS -->
+      <div id="tab-comentarios" class="tab hidden">
+        <h3>Aprovar Comentários</h3>
+        <div id="list-comentarios"></div>
+      </div>
+
+      <div id="lista-promocoes">
+  <p>Carregando promoções...</p>
+</div>
+
+<script type="module" src="js-admin.js"></script>
+
+
+    </main>
+  </section>
+
+  <!-- JavaScript do Admin -->
+  <script src="js/admin.js"></script>
+</body>
+</html>

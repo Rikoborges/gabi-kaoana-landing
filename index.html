@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Gabi Kaoana | Confeitaria Artesanal em Curitiba</title>
-  <meta name="description" content="Doces artesanais com carinho em Curitiba. Brigadeiros, brownies e sobremesas personalizadas. Encomende via WhatsApp!">
+  <meta name="description"
+    content="Doces artesanais com carinho em Curitiba. Brigadeiros, brownies e sobremesas personalizadas. Encomende via WhatsApp!">
 
-  <!-- OpenGraph (para preview nas redes sociais) -->
-  <meta property="og:title" content="Gabi Kaoana Confeitaria Artesanal">
-  <meta property="og:description" content="Doces artesanais em Curitiba. Faça aqui teu pedido pelo WhatsApp!">
-  <meta property="og:image" content="assets/logo.svg">
-
-  <link rel="icon" href="assets/favicon.ico">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <!-- =======================
-       MENU (Slide Lateral)
+       MENU RESPONSIVO
        ======================= -->
   <header class="topo">
     <a href="#inicio" class="logo-link">
@@ -26,18 +23,26 @@
       <span class="nome-logo">Gabi Kaoana</span>
     </a>
 
-    <!-- botão que abre/fecha o menu -->
-    <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+    <!-- botão hamburguer -->
+    <button class="menu-toggle" id="menu-toggle">
+  <span id="icon-open">&#9776;</span>
+  <span id="icon-close" style="display:none;">✕</span>
+</button>
+
+<nav class="menu-lateral" id="menu-list">
+  <ul></ul>
+</nav>
+
 
     <!-- menu lateral -->
     <nav class="menu-lateral" id="menu-list">
       <ul>
-        <li><a href="#inicio" onclick="closeSlideMenu()">Início</a></li>
-        <li><a href="#beneficios" onclick="closeSlideMenu()">Benefícios</a></li>
-        <li><a href="#destaques" onclick="closeSlideMenu()">Destaques</a></li>
-        <li><a href="#cardapio" onclick="closeSlideMenu()">Cardápio</a></li>
-        <li><a href="#galeria" onclick="closeSlideMenu()">Galeria</a></li>
-        <li><a href="#clientes" onclick="closeSlideMenu()">Clientes</a></li>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#beneficios">Benefícios</a></li>
+        <li><a href="#destaques">Destaques</a></li>
+        <li><a href="#cardapio">Cardápio</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#clientes">Clientes</a></li>
         <li><a href="https://api.whatsapp.com/send?phone=5541997529779" target="_blank">📦 Faça seu pedido</a></li>
       </ul>
     </nav>
@@ -49,7 +54,8 @@
   <section id="inicio" class="secao clara hero">
     <h1>Doces que abraçam a alma</h1>
     <p>Confeitaria artesanal em Curitiba 🍬 com amor e sabor em cada detalhe!</p>
-    <a href="https://api.whatsapp.com/send?phone=5541997529779" class="btn-whatsapp" target="_blank">📦 Faça aqui teu pedido</a>
+    <a href="https://api.whatsapp.com/send?phone=5541997529779" class="btn-whatsapp" target="_blank">📦 Faça aqui
+      teu pedido</a>
   </section>
 
   <!-- =======================
@@ -119,7 +125,7 @@
   <section id="galeria" class="secao clara galeria">
     <h2>Galeria de Doces</h2>
     <div class="grid-galeria">
-      <img src="/assets/doces/doce1.png" alt="Doce 1">
+      <img src="assets/doces/doce1.png" alt="Doce 1">
       <img src="assets/doces/doce2.webp" alt="Doce 2">
       <img src="assets/doces/doce3.webp" alt="Doce 3">
       <img src="assets/doces/doce4.webp" alt="Doce 4">
@@ -127,11 +133,11 @@
   </section>
 
   <!-- =======================
-       CLIENTES FELIZES
+       CLIENTES
        ======================= -->
   <section id="clientes" class="secao escura">
     <h2>Clientes Felizes 💜</h2>
-    <p>Veja alguns elogios e momentos marcantes compartilhados pelos nossos clientes!</p>
+    <p>Veja alguns elogios compartilhados pelos nossos clientes!</p>
     <div class="grid-clientes">
       <div class="card-cliente">
         <img src="assets/clientes/cliente1.jpg" alt="Cliente feliz 1">
@@ -150,6 +156,8 @@
       </div>
     </div>
 
+    
+
     <a href="https://www.instagram.com/gabikaoana_" class="btn-instagram" target="_blank">📷 Veja mais no Instagram</a>
   </section>
 
@@ -158,14 +166,13 @@
        ======================= -->
   <footer class="footer-principal">
     <div class="footer-conteudo">
-
       <div class="footer-col">
         <h3>Contato</h3>
         <p>📍 Curitiba - PR</p>
-        <p>📞 <a href="https://api.whatsapp.com/send?phone=5541997529779" target="_blank">(41) 99752‑9779</a></p>
+        <p>📞 <a href="https://api.whatsapp.com/send?phone=5541997529779"
+            target="_blank">(41) 99752‑9779</a></p>
         <p>📷 <a href="https://www.instagram.com/gabikaoana_" target="_blank">@gabikaoana_</a></p>
       </div>
-
       <div class="footer-col">
         <h3>Links Úteis</h3>
         <ul>
@@ -175,7 +182,6 @@
           <li><a href="#clientes">Clientes</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h3>Políticas</h3>
         <ul>
@@ -184,7 +190,6 @@
           <li><a href="#" onclick="openModal('termos-uso')">Termos de Uso</a></li>
         </ul>
       </div>
-
     </div>
 
     <div class="footer-copy">
@@ -193,7 +198,7 @@
   </footer>
 
   <!-- =======================
-       BOTÃO VOLTAR AO TOPO
+       VOLTAR AO TOPO
        ======================= -->
   <button id="voltar-topo">⬆️</button>
 
@@ -203,34 +208,22 @@
   <div class="modal hidden" id="politica-privacidade">
     <div class="modal-content">
       <span class="modal-close" onclick="closeModal('politica-privacidade')">&times;</span>
-      <h2>Política de Privacidade</h2>
-      <p>
-        Nós coletamos apenas informações necessárias para melhorar sua experiência,
-        sempre com respeito e segurança, e nunca compartilhamos dados sem consentimento.
-      </p>
     </div>
   </div>
 
   <div class="modal hidden" id="politica-cookies">
     <div class="modal-content">
       <span class="modal-close" onclick="closeModal('politica-cookies')">&times;</span>
-      <h2>Política de Cookies</h2>
-      <p>
-        Utilizamos cookies para melhorar sua navegação. Você pode desativar cookies nas configurações do navegador.
-      </p>
     </div>
   </div>
 
   <div class="modal hidden" id="termos-uso">
     <div class="modal-content">
       <span class="modal-close" onclick="closeModal('termos-uso')">&times;</span>
-      <h2>Termos de Uso</h2>
-      <p>
-        Ao usar este site, você concorda com estes termos de uso e com o uso responsável conforme legislação vigente.
-      </p>
     </div>
   </div>
 
   <script src="js/main.js"></script>
 </body>
+
 </html>
