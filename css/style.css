@@ -1,0 +1,323 @@
+/* ==================================================
+RESET
+================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #fff5ee;
+  color: #2b1e18;
+  line-height: 1.6;
+}
+
+/* ==================================================
+CORES (ALEGRES, SEM ESTOURAR)
+================================================== */
+:root {
+  --lavanda: #a45bdc;
+  --lavanda-soft: #f2e8fb;
+
+  --pistache: #b8e24b;
+  --pistache-soft: #eef7c8;
+
+  --chocolate: #2b1e18;
+
+  --whatsapp: #25d366;
+}
+
+/* ==================================================
+CONTAINER
+================================================== */
+.container {
+  max-width: 1140px;
+  margin: auto;
+  padding: 0 1.5rem;
+}
+
+/* ==================================================
+HEADER
+================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff5ee;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.header-inner {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo span {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--lavanda);
+}
+
+/* MENU DESKTOP */
+.menu-desktop {
+  display: none;
+  gap: 2rem;
+}
+
+.menu-desktop a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--chocolate);
+}
+
+.menu-cta {
+  color: var(--lavanda);
+}
+
+/* MENU MOBILE BOTÃO */
+.menu-toggle {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--chocolate);
+}
+
+/* ==================================================
+MENU MOBILE (SIMPLES E CONFIÁVEL)
+================================================== */
+.menu-mobile {
+  position: fixed;
+  inset: 0;
+  background: var(--lavanda);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+  z-index: 999;
+}
+
+.menu-mobile.active {
+  transform: translateY(0);
+}
+
+.menu-mobile a {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu-mobile-cta {
+  margin-top: 2rem;
+  background: var(--whatsapp);
+  padding: 1.2rem 2.5rem;
+  border-radius: 999px;
+}
+
+/* ==================================================
+HERO
+================================================== */
+.hero {
+  background: var(--lavanda);
+  color: #fff;
+  padding: 6rem 0 5rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  line-height: 1.1;
+  margin-bottom: 1.4rem;
+}
+
+.hero p {
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.1rem;
+}
+
+/* ==================================================
+BOTÕES
+================================================== */
+.btn-primary {
+  background: var(--whatsapp);
+  color: #fff;
+  padding: 1.1rem 2.6rem;
+  border-radius: 999px;
+  font-weight: 900;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* ==================================================
+SEÇÕES
+================================================== */
+.section {
+  padding: 5.5rem 0;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* ==================================================
+DESTAQUES (CARDS VERTICAIS)
+================================================== */
+.section-highlight {
+  background: #fff;
+}
+
+.highlight-cards {
+  display: grid;
+  gap: 2rem;
+}
+
+.highlight-card {
+  background: var(--lavanda-soft);
+  padding: 2.5rem;
+  border-radius: 28px;
+  text-align: center;
+}
+
+.highlight-card h3 {
+  color: var(--lavanda);
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+/* ==================================================
+CARD CENTRAL
+================================================== */
+.section-center {
+  background: var(--pistache-soft);
+}
+
+.center-card {
+  max-width: 680px;
+  margin: auto;
+  background: #fff;
+  padding: 3rem;
+  border-radius: 32px;
+  text-align: center;
+}
+
+.center-card h2 {
+  margin-bottom: 1rem;
+}
+
+/* ==================================================
+PRODUTOS
+================================================== */
+.product-cards {
+  display: grid;
+  gap: 2.2rem;
+}
+
+.product-card {
+  background: #fff;
+  padding: 2.6rem;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.product-card h3 {
+  color: var(--lavanda);
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.product-card span {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 900;
+}
+
+/* ==================================================
+GALERIA / CARROSSEL (BASE)
+================================================== */
+.section-gallery {
+  background: #fff;
+}
+
+.gallery-carousel {
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.gallery-item {
+  min-width: 240px;
+  height: 240px;
+  background: #ddd;
+  border-radius: 24px;
+  scroll-snap-align: start;
+}
+
+/* ==================================================
+CTA FINAL
+================================================== */
+.section-cta {
+  background: var(--lavanda);
+  color: #fff;
+  text-align: center;
+}
+
+.section-cta h2 {
+  margin-bottom: 2rem;
+}
+
+/* ==================================================
+FOOTER
+================================================== */
+.site-footer {
+  background: #1f140f;
+  color: #fff;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+/* ==================================================
+DESKTOP
+================================================== */
+@media (min-width: 768px) {
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .menu-desktop {
+    display: flex;
+  }
+
+  .menu-mobile {
+    display: none;
+  }
+
+  .highlight-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .product-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery-item {
+    min-width: 300px;
+    height: 300px;
+  }
+}
