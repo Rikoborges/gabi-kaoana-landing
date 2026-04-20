@@ -291,6 +291,40 @@ FOOTER
   padding: 3rem 0;
 }
 
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.footer-menu a {
+  color: #e8c4a0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.footer-menu a:hover {
+  color: #fff;
+}
+
+.footer-credit {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: #7a6258;
+}
+
+.footer-credit a {
+  color: #9a8278;
+  text-decoration: none;
+}
+
+.footer-credit a:hover {
+  color: #e8c4a0;
+}
+
 /* ==================================================
 DESKTOP
 ================================================== */
